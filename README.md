@@ -28,6 +28,16 @@ Run tests:
 uv run pytest
 ```
 
+## CI
+
+GitHub Actions runs the test suite on every push or pull request to `main`.
+
+Workflow file:
+
+```text
+.github/workflows/ci.yml
+```
+
 ## Production-style local run
 
 ```powershell
