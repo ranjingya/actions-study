@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv
+.env
+.env.*
+
+# Git
+.git
+.gitignore
+
+# Logs
+.logs/
+
+# IDE and tools
+.agents/
+.codex/
+
+# Documentation (not needed in image)
+*.md
+CICD_LEARNING.md
