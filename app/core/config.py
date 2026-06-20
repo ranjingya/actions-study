@@ -14,6 +14,8 @@ class Settings(BaseModel):
 def get_settings() -> Settings:
     return Settings(
         app_name=os.getenv("APP_NAME", Settings.model_fields["app_name"].default),
-        app_version=os.getenv("APP_VERSION", Settings.model_fields["app_version"].default),
+        app_version=os.getenv(
+            "APP_VERSION", Settings.model_fields["app_version"].default
+        ),
         environment=os.getenv("APP_ENV", Settings.model_fields["environment"].default),
     )

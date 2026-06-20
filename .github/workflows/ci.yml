@@ -34,7 +34,7 @@ jobs:
         run: uv tool install ruff
 
       - name: Check format
-        run: ruff format --check .
+        run: ruff format --check --diff .
 
       - name: Run lint
         run: ruff check .
