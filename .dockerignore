@@ -20,6 +20,10 @@ htmlcov/
 # Git
 .git
 .gitignore
+.github/
+
+# Tests 
+tests/
 
 # Logs
 .logs/
@@ -28,6 +32,8 @@ htmlcov/
 .agents/
 .codex/
 
-# Documentation (not needed in image)
+# Documentation and config
 *.md
 CICD_LEARNING.md
+Dockerfile
+.dockerignore

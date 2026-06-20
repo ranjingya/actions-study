@@ -2,6 +2,8 @@ FROM astral/uv:python3.14-bookworm-slim
 
 ENV TZ=Asia/Shanghai
 
+ENV UV_INDEX_URL=https://mirrors.aliyun.com/pypi/simple/
+
 WORKDIR /app
 
 COPY pyproject.toml uv.lock ./
