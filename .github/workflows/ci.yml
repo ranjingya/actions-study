@@ -28,7 +28,16 @@ jobs:
           enable-cache: true
 
       - name: Install dependencies
-        run: uv sync --locked
+        run: uv sync --locked --dev
+
+      - name: Install ruff
+        run: uv tool install ruff
+
+      - name: Check format
+        run: ruff format --check .
+
+      - name: Run lint
+        run: ruff check .
 
       - name: Run tests
         run: uv run pytest

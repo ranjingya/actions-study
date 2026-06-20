@@ -35,21 +35,27 @@ push 代码 -> GitHub runner 启动 -> 安装依赖 -> 运行测试 -> 得到通
 
 ### 2. 增强 CI 质量
 
-第一版 CI 稳定后，可以继续加入：
+第一版 CI 稳定后，我们已经加入了 ruff 进行代码格式化和 lint 检查。
 
-- 格式检查
-- lint 检查
-- 项目变复杂后加入类型检查
-- 测试覆盖率报告
-- 在 `README.md` 中加入 CI 状态徽章
+已经完成：
 
-可能使用的工具：
+- 使用 `uv add --dev ruff` 添加开发依赖
+- 在 `pyproject.toml` 中配置 ruff（target-version、line-length、规则集、格式偏好）
+- CI 中加入 `uv run ruff format --check .` 检查代码格式
+- CI 中加入 `uv run ruff check .` 检查代码问题
+- 使用 `uv run ruff check --fix .` 自动修复可修复的问题
 
-```text
-ruff        格式化和 lint
-pytest-cov  测试覆盖率
-mypy        类型检查
-```
+ruff 配置规则：
+
+- `E`：pycodestyle 错误（如缩进错误、多余空格）
+- `F`：Pyflakes（如未使用变量、未引用 import）
+- `I`：isort（import 排序）
+- `W`：pycodestyle 警告
+
+暂时跳过：
+
+- 测试覆盖率报告（小程序不需要）
+- mypy 类型检查（项目简单时性价比低）
 
 ### 3. 构建部署形态
 
