@@ -22,8 +22,11 @@ services:
     # extra_hosts:
     #   - "host.docker.internal:host-gateway"
     networks:
+      - actions-study-network
       - traefik-network
 
 networks:
+  actions-study-network:
+    name: actions-study-network
   traefik-network:
     external: true

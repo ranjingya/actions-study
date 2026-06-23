@@ -5,6 +5,15 @@ from app.main import app
 client = TestClient(app)
 
 
+def test_home_returns_html() -> None:
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/html")
+    assert "actions-study" in response.text
+    assert "/health" in response.text
+
+
 def test_health_returns_ok() -> None:
     response = client.get("/health")
 
