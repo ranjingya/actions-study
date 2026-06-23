@@ -3,5 +3,27 @@ services:
     image: ghcr.io/ranjingya/actions-study:latest
     container_name: actions-study
     restart: unless-stopped
+    # 兼容 IP + 端口访问
     ports:
-      - "8000:8000"
+      - "${APP_HTTP_PORT:-5000}:8000"
+    # 声明容器内部有8000端口开放
+    expose:
+      - "8000"
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: traefik-network
+      traefik.http.routers.actions-study.rule: "Host(`action-study.ranjyaa.top`)"
+      traefik.http.routers.actions-study.entrypoints: websecure
+      traefik.http.routers.actions-study.tls: "true"
+      traefik.http.routers.actions-study.tls.certresolver: myresolver
+      traefik.http.services.actions-study.loadbalancer.server.port: 8000
+    # 访问宿主机某些服务时需要添加 host.docker.internal 映射
+    # 使用 host.docker.internal:9999 访问
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+    networks:
+      - traefik-network
+
+networks:
+  traefik-network:
+    external: true
