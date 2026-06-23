@@ -1,5 +1,5 @@
 services:
-  app:
+  actions-study:
     image: ghcr.io/ranjingya/actions-study:latest
     container_name: actions-study
     restart: unless-stopped
