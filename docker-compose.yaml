@@ -12,10 +12,11 @@ services:
     labels:
       traefik.enable: "true"
       traefik.docker.network: traefik-network
-      traefik.http.routers.actions-study.rule: "Host(`action-study.ranjyaa.top`)"
+      traefik.http.routers.actions-study.rule: "Host(`actions-study.ranjyaa.top`)"
       traefik.http.routers.actions-study.entrypoints: websecure
       traefik.http.routers.actions-study.tls: "true"
-      traefik.http.routers.actions-study.tls.certresolver: myresolver
+      # 已有泛域证书的情况不用再申请证书
+      # traefik.http.routers.actions-study.tls.certresolver: myresolver
       traefik.http.services.actions-study.loadbalancer.server.port: 8000
     # 访问宿主机某些服务时需要添加 host.docker.internal 映射
     # 使用 host.docker.internal:9999 访问
